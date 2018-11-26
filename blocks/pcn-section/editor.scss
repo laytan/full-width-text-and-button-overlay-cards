@@ -1,0 +1,12 @@
+.wp-block-pcn-pcn-section {
+    
+    .pcn-section__button {
+        cursor: text;
+    }
+
+    .pcn-section__button:focus, .pcn-section__button:active {
+        background-color: rgba(0,0,0,0);
+        border-color: white;
+        color: white;
+    }
+}
