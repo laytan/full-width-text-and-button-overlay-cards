@@ -9,4 +9,12 @@
         border-color: white;
         color: white;
     }
+
+    .alignfull,
+    .alignwide {
+        margin-left  : calc( -85vw / 2 + 100% / 2 );
+        margin-right : calc( -85vw / 2 + 100% / 2 );
+        width: 85vw;
+        max-width: 85vw;
+    }
 }

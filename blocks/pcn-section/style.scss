@@ -17,29 +17,34 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-
-        & .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            margin-top: 5em;
-            margin-bottom: 5em;
-        }
     }
 
     .pcn-section__content {
-        width: 60%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        padding: 3em 15px;
+        width: 100%;
+
+        @media(min-width: 1000px) {
+            width: 70%;
+            padding: 8em;
+        }
     }
 
     .pcn-section__headline, .pcn-section__text {
         color: white;
-        font-size: 3em;
+        font-size: 2em;
         text-align: center;
+
+        @media(min-width: 768px) {
+            font-size: 3em;
+        }
+    }
+
+    .pcn-section__headline {
+        margin-bottom: 0;
     }
 
     .pcn-section__text {
@@ -57,9 +62,14 @@
         height: auto;
         text-transform: uppercase;
         border-radius: 1em;
-        font-size: 1.5em;
-        mix-blend-mode: screen;
+        font-size: 1.5em;   
+        mix-blend-mode: lighten;
+        color: black;
         width: 100%;
+        text-decoration: none;
+        border-style: solid;
+        text-align: center;
+        margin-top: 0.5em;
 
         &:hover {
             transform: translateY(-2px);
@@ -90,10 +100,6 @@
     }
 
     @media(min-width:768px) {
-        .pcn-section__inner .container {
-            align-items: flex-start;
-        }
-
         .pcn-section__button-group {
             flex-direction: row;
         }
@@ -122,27 +128,4 @@
 
 .line-up-icons {
     line-height: 18px !important;
-}
-
-.container {
-    margin-left: auto;
-    margin-right: auto;
-    padding-right: 15px;
-    padding-left: 15px;
-
-    @media(min-width: 567px) {
-        max-width: 540px;
-    }
-
-    @media(min-width: 768px) {
-        max-width: 720px;
-    }
-
-    @media(min-width: 992px) {
-        max-width: 960px; 
-    }
-
-    @media(min-width: 1200px) {
-        max-width: 1140px;
-    }
-}
+} 

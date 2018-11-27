@@ -285,40 +285,38 @@ export default registerBlockType(
               className={ sectionInnerClasses } 
               style={ twoOverlays && secondBackgroundID ? { backgroundImage: 'url(' + secondBackgroundURL + ')', } : {} }
               >
-                <div className="container">
-                  <div 
-                  className="pcn-section__content"
-                  >
-                    <RichText
-                      tagName="h2"
-                      className="pcn-section__headline"
-                      multiline="span"
-                      placeholder={ __('Edit me', 'pcn') }
-                      value={ headline }
-                      style={ { fontSize: "3em", } } // Something in the editor fucks with the fontsize so hardcode it here, not done in the front-end so no worries
-                      onChange={ headline => setAttributes( { headline } ) }
-                    />
-                    <RichText
-                      tagName="p"
-                      className="pcn-section__text"
-                      multiline="span"
-                      value={ content }
-                      style={ { fontSize: "2em", } } // Something in the editor fucks with the fontsize so hardcode it here, not done in the front-end so no worries
-                      onChange={ content => setAttributes( { content } ) }
-                      placeholder={ __('Edit me', 'pcn') }
-                    />
-                    <div className="pcn-section__button-group">
-                    { /* Makes this first button a primary button if there is another button, else it will be a secondary button */ }
-                    <a href={ buttonLink } className={ twoButtons ? "pcn-section__button button" : "pcn-section__button pcn-section__button--secondary button" }>
-                        <span>{ buttonText }</span>
+                <div 
+                className="pcn-section__content"
+                >
+                  <RichText
+                    tagName="h2"
+                    className="pcn-section__headline"
+                    multiline="span"
+                    placeholder={ __('Edit me', 'pcn') }
+                    value={ headline }
+                    style={ { fontSize: "3em", } } // Something in the editor fucks with the fontsize so hardcode it here, not done in the front-end so no worries
+                    onChange={ headline => setAttributes( { headline } ) }
+                  />
+                  <RichText
+                    tagName="p"
+                    className="pcn-section__text"
+                    multiline="span"
+                    value={ content }
+                    style={ { fontSize: "2em", } } // Something in the editor fucks with the fontsize so hardcode it here, not done in the front-end so no worries
+                    onChange={ content => setAttributes( { content } ) }
+                    placeholder={ __('Edit me', 'pcn') }
+                  />
+                  <div className="pcn-section__button-group">
+                  { /* Makes this first button a primary button if there is another button, else it will be a secondary button */ }
+                  <a href={ buttonLink } className={ twoButtons ? "pcn-section__button button" : "pcn-section__button pcn-section__button--secondary button" }>
+                      <span>{ buttonText }</span>
+                  </a>
+                  { /* Only render a second button if it's selected in the inspector */ }
+                  { twoButtons &&
+                    <a href={ secondButtonLink } className="pcn-section__button pcn-section__button--secondary button ml">
+                      <span>{ secondButtonText }</span>
                     </a>
-                    { /* Only render a second button if it's selected in the inspector */ }
-                    { twoButtons &&
-                      <a href={ secondButtonLink } className="pcn-section__button pcn-section__button--secondary button ml">
-                        <span>{ secondButtonText }</span>
-                      </a>
-                    } 
-                    </div>
+                  } 
                   </div>
                 </div>
               </div>
@@ -365,29 +363,27 @@ export default registerBlockType(
             className={ sectionInnerClasses } 
             style={ twoOverlays && secondBackgroundID ? { backgroundImage: 'url(' + secondBackgroundURL + ')', } : {} }
             >
-              <div className="container">
-                <div className="pcn-section__content">
-                  <h2
-                    className="pcn-section__headline"
-                  >
-                    { headline }
-                  </h2>
-                  <p
-                    className="pcn-section__text"
-                  >
-                    { content }
-                  </p>
-                  <div className="pcn-section__button-group">
-                  { /* Makes this first button a primary button if there is another button, else it will be a secondary button */ }
-                    <a href={ buttonLink } className={ twoButtons ? "pcn-section__button button" : "pcn-section__button pcn-section__button--secondary button" }>
-                        { buttonText }
+              <div className="pcn-section__content">
+                <h2
+                  className="pcn-section__headline"
+                >
+                  { headline }
+                </h2>
+                <p
+                  className="pcn-section__text"
+                >
+                  { content }
+                </p>
+                <div className="pcn-section__button-group">
+                { /* Makes this first button a primary button if there is another button, else it will be a secondary button */ }
+                  <a href={ buttonLink } className={ twoButtons ? "pcn-section__button button" : "pcn-section__button pcn-section__button--secondary button" }>
+                      { buttonText }
+                  </a>
+                  { twoButtons &&  /* Only render a second button if it's selected in the inspector */
+                    <a href={ secondButtonLink } className="pcn-section__button pcn-section__button--secondary button ml">
+                      { secondButtonText }
                     </a>
-                    { twoButtons &&  /* Only render a second button if it's selected in the inspector */
-                      <a href={ secondButtonLink } className="pcn-section__button pcn-section__button--secondary button ml">
-                        { secondButtonText }
-                      </a>
-                    } 
-                    </div>
+                  } 
                 </div>
               </div>
             </div>
