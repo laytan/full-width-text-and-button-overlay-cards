@@ -15,6 +15,7 @@ const {
     MediaUpload,
     InspectorControls,
     RichText,    
+    URLInput,
 } = wp.editor;
 const {
     Button,
@@ -60,8 +61,7 @@ export default registerBlockType(
         default: __('Edit me', 'npc'),
       },
       buttonLink: {
-        type: 'string',
-        default: '/',
+        type: 'url',
       },
       twoButtons: {
         type: 'boolean',
@@ -72,8 +72,7 @@ export default registerBlockType(
         default: __('Edit me', 'npc'),
       },
       secondButtonLink: {
-        type: 'string',
-        default: '/',
+        type: 'url',
       },
       twoOverlays: {
         type: 'boolean',
@@ -84,6 +83,9 @@ export default registerBlockType(
       },
       secondBackgroundURL: {
         type: 'string',
+      },
+      url: {
+        type: 'url',
       },
     },
     edit: props => {
@@ -103,6 +105,7 @@ export default registerBlockType(
           buttonLink,
           secondButtonText,
           secondButtonLink,
+          url,
         },
       } = props;
 
@@ -210,11 +213,12 @@ export default registerBlockType(
                   value={ buttonText }
                   onChange={ ( buttonText ) => setAttributes( { buttonText } ) }
                 />
-              <TextControl
-                label={ __('Button link', 'pcn') }
-                value={ buttonLink }
-                onChange={ ( buttonLink ) => setAttributes( { buttonLink } ) }
-              />
+               <label class="components-base-control__label" for="buttonLink">Button link</label>
+                <URLInput
+                  id="buttonLink"
+                  value={ buttonLink }
+                  onChange={ (buttonLink, post) => setAttributes( { buttonLink } ) } 
+                />
               { /* Only render the options for the second button when 2 buttons is actually checked */ }
               { twoButtons &&
                 <TextControl
@@ -223,11 +227,14 @@ export default registerBlockType(
                   onChange={ ( secondButtonText ) => setAttributes( { secondButtonText } ) }
                 />
               }
+              { twoButtons &&
+                <label class="components-base-control__label" for="secondButtonLink">Second button link</label>
+              }
               { twoButtons && //Need this second check because we can't add the two textfields in one statement (Needs 1 parent element).
-                <TextControl
-                  label={ __('Second button link', 'pcn') }
+                <URLInput
+                  id="secondButtonLink"
                   value={ secondButtonLink }
-                  onChange={ ( secondButtonLink ) => setAttributes( { secondButtonLink } ) }
+                  onChange={ (secondButtonLink, post) => setAttributes( { secondButtonLink } ) } 
                 />
               }
             </PanelBody>

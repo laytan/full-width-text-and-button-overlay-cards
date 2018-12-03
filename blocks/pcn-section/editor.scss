@@ -17,4 +17,13 @@
         width: 85vw;
         max-width: 85vw;
     }
+
+    
+}
+.editor-url-input input {
+    max-width: 101%;    
+}
+
+.editor-url-input input:nth-child(1) {
+    margin-bottom: 1.5em;
 }
