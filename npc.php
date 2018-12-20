@@ -19,6 +19,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
+ //Define a namespace so wordpress loads our plugin correctly
 namespace npc\npc;
 
 //  Exit if accessed directly.
@@ -26,10 +27,6 @@ defined('ABSPATH') || exit;
 
 /**
  * Gets this plugin's absolute directory path.
- *
- * @since  2.1.0
- * @ignore
- * @access private
  *
  * @return string
  */
@@ -40,15 +37,13 @@ function _get_plugin_directory() {
 /**
  * Gets this plugin's URL.
  *
- * @since  2.1.0
- * @ignore
- * @access private
- *
  * @return string
  */
 function _get_plugin_url() {
+	//Define as static because this will never change between calls
 	static $plugin_url;
 
+	//If the static variable has not been set this reqeuest, define $plugin_url
 	if ( empty( $plugin_url ) ) {
 		$plugin_url = plugins_url( null, __FILE__ );
 	}
@@ -56,5 +51,5 @@ function _get_plugin_url() {
 	return $plugin_url;
 }
 
-// Enqueue JS and CSS
+// Include the file that enqueues our other files
 include __DIR__ . '/lib/enqueue-scripts.php';
